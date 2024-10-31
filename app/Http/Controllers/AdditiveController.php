@@ -37,7 +37,7 @@ class AdditiveController extends Controller
      */
     public function show(Additive $additive)
     {
-        //
+        
     }
 
     /**
