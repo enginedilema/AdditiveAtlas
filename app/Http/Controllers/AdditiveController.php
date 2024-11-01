@@ -39,8 +39,10 @@ class AdditiveController extends Controller
     {
         $additives = Additive::where('additive_e_code', $additive->additive_e_code)
                         ->orderBy('display_order','asc')->get();
-        
-        return view('additives.show', compact('additives','additive'));
+        $categories = Additive::where('additive_e_code', $additive->additive_e_code)
+        ->groupBy('food_category_level')
+        ->orderBy('display_order','asc')->get();
+        return view('additives.show', compact('additives','categories','additive'));
     }
 
     /**
