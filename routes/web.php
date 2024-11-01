@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdditiveController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
+Route::get('/additives/{additive}', [AdditiveController::class, 'show'])->name('additives.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

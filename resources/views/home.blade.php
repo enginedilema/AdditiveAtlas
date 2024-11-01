@@ -10,7 +10,7 @@
       @foreach ($additives as $additive)
       <div class="bg-white p-4 rounded shadow hover:shadow-lg transition-shadow">
         <h3 class="text-xl font-bold text-petroleumBlue">
-          <a href="#" class="hover:text-coralOrange">{{$additive->additive_e_code}}</a>
+          <a href="{{route('additives.show',$additive)}}" class="hover:text-coralOrange">{{$additive->additive_e_code}}</a>
         </h3>
         <p class="text-gray-700 mt-2">{{$additive->additive_name}}</p>
       </div>

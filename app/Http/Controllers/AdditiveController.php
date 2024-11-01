@@ -37,7 +37,10 @@ class AdditiveController extends Controller
      */
     public function show(Additive $additive)
     {
+        $additives = Additive::where('additive_e_code', $additive->additive_e_code)
+                        ->orderBy('display_order','asc')->get();
         
+        return view('additives.show', compact('additives','additive'));
     }
 
     /**
