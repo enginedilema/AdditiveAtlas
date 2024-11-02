@@ -10,14 +10,16 @@
     </nav>
 
     <!-- Buscador -->
-    <div class="flex items-center">
+    <form action="{{ route('search') }}" method="GET" class="flex items-center">
       <input
         type="text"
+        name="query"
         placeholder="Search additives..."
         class="p-2 rounded-l bg-white text-petroleumBlue focus:outline-none"
+        required
       />
-      <button class="bg-coralOrange p-2 rounded-r text-white hover:bg-petroleumBlue">
+      <button type="submit" class="bg-coralOrange p-2 rounded-r text-white hover:bg-petroleumBlue">
         Search
       </button>
-    </div>
+    </form>
   </header>

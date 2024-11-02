@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-
+@section('title', 'Home')
 
 @section('content')
 <main class="container mx-auto p-8">

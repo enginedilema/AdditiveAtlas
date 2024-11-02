@@ -20,3 +20,6 @@ Controllermostrarà la pàgina d'inici amb el llistat d'additius.
 
 ### AdditiveShow
 AdditiveController@show mostrarà les dades d'un additiu.
+
+### Search
+Implementar el cercador de additius y millorar una mica la vista del AdditiveShow.

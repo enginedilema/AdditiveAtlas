@@ -4,9 +4,12 @@ use App\Http\Controllers\AdditiveController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/additives/{additive}', [AdditiveController::class, 'show'])->name('additives.show');
+Route::get('/search', SearchController::class)->name('search');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
