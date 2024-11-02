@@ -35,6 +35,11 @@ Volem personalitzar la metadescription de la pàgina web perquè sigui adaptada 
 
 ## Captures de pantalla
 
+### Pàgina d'Inici
 ![Inici](images/home.jpg)
+
+### Detall d'Aditiu
 ![Detall d'additiu](images/additive.jpg)
+
+### Cercador d'Aditius
 ![Cercador](images/search.jpg)
