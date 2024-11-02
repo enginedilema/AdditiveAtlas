@@ -32,3 +32,9 @@ Crearem un sitemap en format XML per facilitat l'indexació del contingut a Goog
 
 ### Metadescription
 Volem personalitzar la metadescription de la pàgina web perquè sigui adaptada a cada additiu i una mica clikbait.
+
+## Captures de pantalla
+
+![Inici](images/home.jpg)
+![Detall d'additiu](images/additive.jpg)
+![Cercador](images/search.jpg)
