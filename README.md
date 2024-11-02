@@ -33,6 +33,10 @@ Crearem un sitemap en format XML per facilitat l'indexació del contingut a Goog
 ### Metadescription
 Volem personalitzar la metadescription de la pàgina web perquè sigui adaptada a cada additiu i una mica clikbait.
 
+### Google analytics
+Implementem Google Analytics a la web. Modifiqueu l'identificaro 'G-XXXXXXXXXX' que trovarem a la vista layouts.analytics.blade.php
+
+
 ## Captures de pantalla
 
 ### Pàgina d'Inici
