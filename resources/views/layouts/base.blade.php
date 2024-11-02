@@ -7,6 +7,7 @@
     @yield('title')
     - additiveAtlas.cat
   </title>
+  <meta name="description" content="@yield('meta_description', 'Descobreix què s’amaga darrere dels additius alimentaris: impacte, riscos, i molt més en additiveAtlas.cat. Tot el que Google no t’explicarà directament!')">
   <script src="https://cdn.tailwindcss.com"></script>
 @vite('resources/css/app.css')
 </head>

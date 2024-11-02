@@ -3,6 +3,10 @@
 
 @section('h1', $additive->additive_name)
 
+@section('meta_description')
+    Tot el que necessites saber sobre {{ $additive->additive_name }} ({{ $additive->additive_e_code }}): perills, usos, i normativa. Descobreix si realment és segur!
+@endsection
+
 @section('content')
 <div class="container mx-auto py-8">
     <!-- Información General del Aditivo -->

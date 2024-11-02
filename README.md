@@ -29,3 +29,6 @@ Millorem l'estructura de la url dels aditius perque quedi millor al cercar a Goo
 
 ### Sitemap.xml
 Crearem un sitemap en format XML per facilitat l'indexació del contingut a Google Search Console.Utilitzarem un controlador específic per aquesta tasca.
+
+### Metadescription
+Volem personalitzar la metadescription de la pàgina web perquè sigui adaptada a cada additiu i una mica clikbait.
