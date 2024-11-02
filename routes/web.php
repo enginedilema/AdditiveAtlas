@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 
 Route::get('/', HomeController::class)->name('home');
-Route::get('/additives/{additive}', [AdditiveController::class, 'show'])->name('additives.show');
+Route::get('/additives/{name}/{code}/{id}', [AdditiveController::class, 'show'])->name('additives.show');
 Route::get('/search', SearchController::class)->name('search');
 
 

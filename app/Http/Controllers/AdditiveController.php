@@ -35,8 +35,9 @@ class AdditiveController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Additive $additive)
+    public function show(String $name, String $code, int $id)
     {
+        $additive = Additive::findOrFail($id);
         $additives = Additive::where('additive_e_code', $additive->additive_e_code)
                         ->orderBy('display_order','asc')->get();
         $categories = Additive::where('additive_e_code', $additive->additive_e_code)

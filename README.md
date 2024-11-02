@@ -23,3 +23,6 @@ AdditiveController@show mostrarà les dades d'un additiu.
 
 ### Search
 Implementar el cercador de additius y millorar una mica la vista del AdditiveShow.
+
+### Friendly URL
+Millorem l'estructura de la url dels aditius perque quedi millor al cercar a Google
