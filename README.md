@@ -26,3 +26,6 @@ Implementar el cercador de additius y millorar una mica la vista del AdditiveSho
 
 ### Friendly URL
 Millorem l'estructura de la url dels aditius perque quedi millor al cercar a Google
+
+### Sitemap.xml
+Crearem un sitemap en format XML per facilitat l'indexació del contingut a Google Search Console.Utilitzarem un controlador específic per aquesta tasca.
