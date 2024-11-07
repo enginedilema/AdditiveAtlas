@@ -9,6 +9,10 @@ use App\Http\Controllers\SitemapController;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Route::get('/additives/{name}/{code}/{id}', [AdditiveController::class, 'show'])->name('additives.show');
 Route::get('/search', SearchController::class)->name('search');
 

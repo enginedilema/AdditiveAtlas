@@ -36,6 +36,8 @@ Volem personalitzar la metadescription de la pàgina web perquè sigui adaptada 
 ### Google analytics
 Implementem Google Analytics a la web. Modifiqueu l'identificaro 'G-XXXXXXXXXX' que trovarem a la vista layouts.analytics.blade.php
 
+### Adsene, banner
+
 
 ## Captures de pantalla
 
