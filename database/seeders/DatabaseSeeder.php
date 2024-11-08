@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Additive;
 use App\Models\AdditiveDetail;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -25,6 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdditiveSeeder::class,
             AdditiveDetailSeeder::class,
+            AdditiveTranslationSeeder::class,
+            AdditiveDetailTranslationSeeder::class,
         ]);
     }
 }

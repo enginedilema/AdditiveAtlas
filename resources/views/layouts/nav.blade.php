@@ -28,4 +28,9 @@
       </button>
   </div>
 </form>
+<div class="language-selector">
+  <a href="{{ route('set.language', 'en') }}" class="text-sm {{ App::isLocale('en') ? 'font-bold' : '' }}">English</a> |
+  <a href="{{ route('set.language', 'es') }}" class="text-sm {{ App::isLocale('es') ? 'font-bold' : '' }}">Español</a> |
+  <a href="{{ route('set.language', 'fr') }}" class="text-sm {{ App::isLocale('fr') ? 'font-bold' : '' }}">Français</a>
+</div>
 </header>
