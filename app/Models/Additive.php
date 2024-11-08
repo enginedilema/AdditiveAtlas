@@ -25,4 +25,15 @@ class Additive extends Model
   {
       return $this->hasMany(AdditiveDetail::class, 'additive_e_code', 'additive_e_code');
   }
+
+  public function translations()
+    {
+        return $this->hasMany(AdditiveTranslation::class);
+    }
+
+    public function translation($lang = 'en')
+    {
+        return $this->translations()->where('lang', $lang)->first()
+            ?? $this->translations()->where('lang', 'en')->first();
+    }
 }

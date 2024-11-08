@@ -6,12 +6,18 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SitemapController;
+use Illuminate\Support\Facades\Session;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+Route::get('/set-language/{lang}', function ($lang) {
+    Session::put('locale', $lang);
+    return redirect()->back();
+})->name('set.language');
 
 Route::get('/additives/{name}/{code}/{id}', [AdditiveController::class, 'show'])->name('additives.show');
 Route::get('/search', SearchController::class)->name('search');

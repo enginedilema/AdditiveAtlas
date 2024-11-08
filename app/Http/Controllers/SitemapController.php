@@ -20,8 +20,8 @@ class SitemapController extends Controller
         foreach ($additives as $additive) {
             $url = $xml->addChild('url');
             $url->addChild('loc', route('additives.show', [
-                'name' => $additive->additive_name ? Str::slug($additive->additive_name) : 'no-name',
-                'code' => $additive->additive_e_code ? Str::slug($additive->additive_e_code) : 'no-code',
+                'name' => Str::slug($additive->additive_name) ? Str::slug($additive->additive_name) : 'no-name',
+                'code' => Str::slug($additive->additive_e_code) ? Str::slug($additive->additive_e_code) : 'no-code',
                 'id' => $additive->id
             ]));
             $url->addChild('lastmod', $additive->updated_at->toAtomString());

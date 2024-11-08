@@ -38,6 +38,8 @@ class AdditiveController extends Controller
      */
     public function show(String $name, String $code, int $id)
     {
+        $lang = app()->getLocale();
+
         $additive = Additive::findOrFail($id);
         $additives = AdditiveDetail::where('additive_e_code', $additive->additive_e_code)
                         ->orderBy('display_order','asc')->get();

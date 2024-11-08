@@ -42,6 +42,9 @@ Demanada la validació per part d'Adsense
 ## Refactorització de la base de dades
 A l'inici del projecte vam prendre una decisió per minimitzar el temps de creació de la base de dades, però no era el disseny òptim. Això es coneix com una decisió de disseny que comporta un **deute tècnic**. Això vol dir que ara hem de perdre un temps per reparar aquesta decisió inicial.
 
+## Internacionalització de la base de dades
+Gestionem l'idioma amb una variable dins la sessió.
+Creem una taula amb les traduccions dels camps de la taula Additive i AdditiveDetail
 
 ## Captures de pantalla
 
