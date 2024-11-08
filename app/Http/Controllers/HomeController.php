@@ -12,7 +12,8 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $additives = Additive::groupBy('additive_e_code')->get();
+        $additives = Additive::all();
+       //    dd($additives[0]);
         return view('home', compact('additives'));
     }
 }

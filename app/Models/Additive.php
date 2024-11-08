@@ -6,8 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Additive extends Model
 {
-    protected $casts = [
-        'group_members' => 'array',
-        'member_of_groups' => 'array',
-    ];
+ protected $fillables = [
+  'additive_e_code',
+  'additive_name',
+  'additive_description',
+  'additive_function',
+  'additive_origin',
+  'additive_danger',
+  'additive_note',
+  'additive_eu_approval',
+  'additive_eu_approval_code',
+  'additive_eu_approval_date',
+  'additive_eu_approval_expiration_date',
+  'additive_eu_approval_note',
+  'additive_eu_approval_link'];
+
+  public function details()
+  {
+      return $this->hasMany(AdditiveDetail::class, 'additive_e_code', 'additive_e_code');
+  }
 }

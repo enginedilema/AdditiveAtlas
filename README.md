@@ -37,6 +37,10 @@ Volem personalitzar la metadescription de la pàgina web perquè sigui adaptada 
 Implementem Google Analytics a la web. Modifiqueu l'identificaro 'G-XXXXXXXXXX' que trovarem a la vista layouts.analytics.blade.php
 
 ### Adsene, banner
+Demanada la validació per part d'Adsense
+
+## Refactorització de la base de dades
+A l'inici del projecte vam prendre una decisió per minimitzar el temps de creació de la base de dades, però no era el disseny òptim. Això es coneix com una decisió de disseny que comporta un **deute tècnic**. Això vol dir que ara hem de perdre un temps per reparar aquesta decisió inicial.
 
 
 ## Captures de pantalla

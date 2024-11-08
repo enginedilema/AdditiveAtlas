@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Additive;
 use App\Http\Requests\StoreAdditiveRequest;
 use App\Http\Requests\UpdateAdditiveRequest;
+use App\Models\AdditiveDetail;
 
 class AdditiveController extends Controller
 {
@@ -38,9 +39,9 @@ class AdditiveController extends Controller
     public function show(String $name, String $code, int $id)
     {
         $additive = Additive::findOrFail($id);
-        $additives = Additive::where('additive_e_code', $additive->additive_e_code)
+        $additives = AdditiveDetail::where('additive_e_code', $additive->additive_e_code)
                         ->orderBy('display_order','asc')->get();
-        $categories = Additive::where('additive_e_code', $additive->additive_e_code)
+        $categories = AdditiveDetail::where('additive_e_code', $additive->additive_e_code)
         ->groupBy('food_category_level')
         ->orderBy('display_order','asc')->get();
         return view('additives.show', compact('additives','categories','additive'));
