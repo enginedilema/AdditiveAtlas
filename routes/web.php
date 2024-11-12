@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\GeminiController;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
@@ -37,3 +38,5 @@ require __DIR__.'/auth.php';
 Route::get('theme', function () {
     return view('layouts.theme');
 })->name('theme');
+
+Route::get('gemini' , [GeminiController::class, 'generateContent'])->name('gemini');

@@ -46,6 +46,9 @@ A l'inici del projecte vam prendre una decisió per minimitzar el temps de creac
 Gestionem l'idioma amb una variable dins la sessió.
 Creem una taula amb les traduccions dels camps de la taula Additive i AdditiveDetail
 
+## Generar contingut amb IA
+Utilitzant la API de Google Gemini generarem contingut pels additius en angles
+
 ## Captures de pantalla
 
 ### Pàgina d'Inici
