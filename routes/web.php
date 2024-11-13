@@ -8,6 +8,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\GeminiController;
+use App\Http\Controllers\TranslateAdditiveController;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
@@ -40,3 +41,4 @@ Route::get('theme', function () {
 })->name('theme');
 
 Route::get('gemini' , [GeminiController::class, 'generateContent'])->name('gemini');
+Route::get('translate' , [TranslateAdditiveController::class, 'translate'])->name('translate');

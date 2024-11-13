@@ -44,10 +44,13 @@ A l'inici del projecte vam prendre una decisió per minimitzar el temps de creac
 
 ## Internacionalització de la base de dades
 Gestionem l'idioma amb una variable dins la sessió.
-Creem una taula amb les traduccions dels camps de la taula Additive i AdditiveDetail
+Creem una taula amb les traduccions dels camps de la taula Additive i AdditiveDetail.
 
 ## Generar contingut amb IA
-Utilitzant la API de Google Gemini generarem contingut pels additius en angles
+Utilitzant la API de Google Gemini generarem contingut pels additius en angles.
+
+## Traduir contingut
+Utilitzant una llibreria externa, traduir el contingut de l'angles a la resta d'idiomes.
 
 ## Captures de pantalla
 

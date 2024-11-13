@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Additive;
+use App\Models\AdditiveTranslation;
 
 class GeminiController extends Controller
 {
     public function generateContent(Request $request)
     {
         $apiKey = env('API_GOOGLE_GEMINI');
-        $additive = Additive::whereNull('description')->inRandomOrder()->first();        $prompt = "Act as a copywriter specialist to create a structured article in JSON format with all EFSA knowledge. I want the article to be about $additive->additive_name $additive->additive_e_code and each section to have a title and quality content. The output format will be a JSON with this format:
+        $additive = Additive::whereNull('description')->inRandomOrder()->first();
+        if(!$additive) {
+            return response()->json(['message' => 'All additives have been updated']);
+        }
+        $prompt = "Act as a copywriter specialist to create a structured article in JSON format with all EFSA knowledge. I want the article to be about $additive->additive_name $additive->additive_e_code and each section to have a title and quality content. The output format will be a JSON with this format:
 {'id': $additive->id,
 'description' : '<h2></h2><p></p>Lorem ipsum in HTML format',
 'option_process' : '<h2></h2><p></p>Lorem ipsum in HTML format',
@@ -21,6 +26,7 @@ class GeminiController extends Controller
 'side_effects' : '<h2></h2><p></p>Lorem ipsum in HTML format'}";
 
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$apiKey}";
+        $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key={$apiKey}";
 
         // Configura los datos de la solicitud
         $data = [
@@ -62,8 +68,17 @@ class GeminiController extends Controller
 
                 // Guarda los cambios en la base de datos
                 $additive->save();
+                $additiveTranslation = AdditiveTranslation::where('additive_id', $additive->id)->where('lang', 'en')->first();
+                $additiveTranslation->description = $additive->description;
+                $additiveTranslation->option_process = $additive->option_process;
+                $additiveTranslation->food_uses = $additive->food_uses;
+                $additiveTranslation->industrial_uses = $additive->industrial_uses;
+                $additiveTranslation->beneficial_properties = $additive->beneficial_properties;
+                $additiveTranslation->side_effects = $additive->side_effects;
+                $additiveTranslation->save();
 
-                return response()->json(['message' => var_dump($additive)]);        } else {
+
+                return response()->json(['message' => 'Additive updated']);        } else {
             return response()->json(['error' => 'Failed to fetch data from Google Gemini API'], $response->status());
         }
     }
