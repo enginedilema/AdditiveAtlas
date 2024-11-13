@@ -33,6 +33,7 @@ class Additive extends Model
 
     public function translation($lang = 'en')
     {
+        
         return $this->translations()->where('lang', $lang)->first()
             ?? $this->translations()->where('lang', 'en')->first();
     }

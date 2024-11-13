@@ -1,14 +1,14 @@
 @extends('layouts.base')
 @section('title')
-{!!$additive->additive_name!!}
+{!!$additive->translation(session('locale'))->additive_name!!}
 @endsection
 
 @section('h1')
-{!!$additive->additive_name!!}
+{!!$additive->translation(session('locale'))->additive_name!!}
 @endsection
 
 @section('meta_description')
-    Tot el que necessites saber sobre {{ $additive->additive_name }} ({{ $additive->additive_e_code }}): perills, usos, i normativa. Descobreix si realment és segur!
+    Tot el que necessites saber sobre {{ $additive->translation(session('locale'))->additive_name }} ({{ $additive->additive_e_code }}): perills, usos, i normativa. Descobreix si realment és segur!
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
 
     <!-- Información General del Aditivo -->
     <section class="bg-white p-6 rounded-lg shadow-md mb-8">
-        <h2 class="text-2xl font-bold text-petroleumBlue mb-4">{{ $additive->additive_e_code }} - {!! $additive->additive_name !!}</h2>
+        <h2 class="text-2xl font-bold text-petroleumBlue mb-4">{{ $additive->additive_e_code }} - {!! $additive->translation(session('locale'))->additive_name !!}</h2>
         <p class="text-gray-700 mb-4">{{ $additive->additive_message ?? 'No additional message available for this additive.' }}</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -39,6 +39,14 @@
         <h3 class="text-2xl font-bold text-center mb-4">Highlights of {!! $additive->additive_name !!}</h3>
         <p class="text-center">Discover important aspects about this additive, including its safety, usage limits, and regulatory status.</p>
     </section>
+
+    <!-- Atributos adicionales -->
+    @foreach (['description', 'option_process', 'food_uses', 'industrial_uses', 'beneficial_properties', 'side_effects'] as $attribute)
+        @if(!empty($additive->translation(session('locale'))->$attribute))
+            <section class="bg-white p-6 rounded-lg shadow-md mb-8">
+                {!! preg_replace('/<h2>(.*?)<\/h2>/', '<h2 class="text-3xl font-bold text-center mb-6">$1</h2>', $additive->translation(session('locale'))->$attribute) !!}            </section>
+        @endif
+    @endforeach
 
     <!-- Tabla de Categorías Alimentarias -->
     <h2 class="text-3xl font-bold text-center mb-6">Food Additive Categories</h2>

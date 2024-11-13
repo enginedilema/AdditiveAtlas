@@ -16,7 +16,7 @@
       'id' => $additive->id
   ]) }}" class="hover:text-coralOrange">{{$additive->additive_e_code ?? 'sin Codigo'}}</a>
           </h3>
-          <p class="text-gray-700 mt-2">{{$additive->additive_name}}</p>
+          <p class="text-gray-700 mt-2">{{$additive->translation(session('locale'))->additive_name}}</p>
         </div>
         @endforeach
 

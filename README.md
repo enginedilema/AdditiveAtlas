@@ -52,6 +52,9 @@ Utilitzant la API de Google Gemini generarem contingut pels additius en angles.
 ## Traduir contingut
 Utilitzant una llibreria externa, traduir el contingut de l'angles a la resta d'idiomes.
 
+## Mostrar la vista en diferents idiomes
+Els detalls del aditiu canvien d'idioma segons la variable de sessió.
+
 ## Captures de pantalla
 
 ### Pàgina d'Inici
