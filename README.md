@@ -55,6 +55,9 @@ Utilitzant una llibreria externa, traduir el contingut de l'angles a la resta d'
 ## Mostrar la vista en diferents idiomes
 Els detalls del aditiu canvien d'idioma segons la variable de sessió.
 
+## Sistema de rutes multiidioma
+Modificar les rutes per gestionar cada idioma en una carpeta diferent.
+
 ## Captures de pantalla
 
 ### Pàgina d'Inici

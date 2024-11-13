@@ -36,7 +36,7 @@ class AdditiveController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(String $name, String $code, int $id)
+    public function show(String $lang, String $name, String $code, int $id)
     {
         $lang = app()->getLocale();
 

@@ -1,15 +1,15 @@
 <header class="bg-gradient-to-r from-green-400 to-green-600 shadow-lg p-4 flex justify-between items-center sticky top-0 z-50">
   <!-- Logo -->
   <div class="text-white font-extrabold text-2xl tracking-wider">
-      <a href="{{ route('home') }}" class="hover:text-lightGray transition duration-200 ease-in-out">
+      <a href="{{ route('home',['lang' => session('locale')]) }}" class="hover:text-lightGray transition duration-200 ease-in-out">
           additiveAtlas.cat
       </a>
   </div>
 
   <!-- Menú de escritorio -->
   <nav class="hidden md:flex space-x-6 font-semibold">
-    <a href="{{ route('home') }}" class="text-white hover:text-lightGray transition duration-200 ease-in-out">Home</a>
-    <a href="{{ route('about') }}" class="text-white hover:text-lightGray transition duration-200 ease-in-out">About</a>
+    <a href="{{ route('home',['lang' => session('locale')]) }}" class="text-white hover:text-lightGray transition duration-200 ease-in-out">Home</a>
+    <a href="{{ route('about',['lang' => session('locale')]) }}" class="text-white hover:text-lightGray transition duration-200 ease-in-out">About</a>
     <a href="#" class="text-white hover:text-lightGray transition duration-200 ease-in-out">Contact</a>
   </nav>
 
@@ -25,13 +25,13 @@
 
   <!-- Menú móvil -->
   <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold space-y-4 p-4">
-    <a href="{{ route('home') }}" class="block hover:text-lightGray transition duration-200 ease-in-out">Home</a>
-    <a href="{{ route('about') }}" class="block hover:text-lightGray transition duration-200 ease-in-out">About</a>
+    <a href="{{ route('home',['lang' => session('locale')]) }}" class="block hover:text-lightGray transition duration-200 ease-in-out">Home</a>
+    <a href="{{ route('about',['lang' => session('locale')]) }}" class="block hover:text-lightGray transition duration-200 ease-in-out">About</a>
     <a href="#" class="block hover:text-lightGray transition duration-200 ease-in-out">Contact</a>
   </div>
 
   <!-- Buscador -->
-  <form action="{{ route('search') }}" method="GET" class="hidden md:flex items-center bg-white rounded-full shadow-lg overflow-hidden">
+  <form action="{{ route('search',['lang' => session('locale')]) }}" method="GET" class="hidden md:flex items-center bg-white rounded-full shadow-lg overflow-hidden">
     <div class="flex items-center overflow-hidden rounded-full w-full">
       <input
           type="text"
@@ -47,16 +47,25 @@
   </form>
 
   <!-- Selector de idioma -->
-  <div class="language-selector hidden md:block">
-    <a href="{{ route('set.language', 'en') }}" class="text-sm {{ session('locale')==='en' ? 'font-bold' : '' }}">English</a> |
-    <a href="{{ route('set.language', 'es') }}" class="text-sm {{ session('locale')==='es' ? 'font-bold' : '' }}">Español</a> |
-    <a href="{{ route('set.language', 'fr') }}" class="text-sm {{ session('locale')==='fr' ? 'font-bold' : '' }}">Français</a>
-  </div>
+  @php
+  $languages = ['en' => 'English', 'es' => 'Español', 'fr' => 'Français'];
+  $currentLang = request()->segment(1); // Detecta el prefijo de idioma en la URL
+@endphp
+
+<div class="language-selector hidden md:block">
+  @foreach($languages as $langCode => $language)
+      <a href="{{ url("/$langCode") }}" 
+         class="text-sm {{ $currentLang === $langCode ? 'font-bold' : '' }}">
+          {{ $language }}
+      </a>
+      @if (!$loop->last) | @endif
+  @endforeach
+</div>
 </header>
 
 <!-- Buscador, visible tanto en móvil como en escritorio -->
 <div class="flex justify-center mt-4 px-4">
-  <form action="{{ route('search') }}" method="GET" class="flex items-center bg-white rounded-full shadow-lg overflow-hidden w-full md:w-1/2">
+  <form action="{{ route('search',['lang' => session('locale')]) }}" method="GET" class="flex items-center bg-white rounded-full shadow-lg overflow-hidden w-full md:w-1/2">
     <input
         type="text"
         name="query"
