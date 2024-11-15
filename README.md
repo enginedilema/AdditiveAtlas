@@ -61,6 +61,12 @@ Modificar les rutes per gestionar cada idioma en una carpeta diferent.
 ## Hreflang
 Implementem el sistema de a hreflang per millorar el nostre SEO internacional.
 
+## Sistema de traduccions amb API externa
+Google Translate i DeepL
+
+## OpenGraf
+Etiquetes meta de Open Graph i Twitter Card al detall de aditiu
+
 ## Captures de pantalla
 
 ### Pàgina d'Inici
