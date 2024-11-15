@@ -11,6 +11,19 @@
     Tot el que necessites saber sobre {{ $additive->translation(session('locale'))->additive_name }} ({{ $additive->additive_e_code }}): perills, usos, i normativa. Descobreix si realment és segur!
 @endsection
 
+@section('meta')
+<!-- Meta OG Tags -->
+<meta property="og:title" content="{{ $additive->additive_name }}" />
+<meta property="og:description" content="{{ Str::limit('Discover everything about ' . $additive->additive_name, 150) }}" />
+<meta property="og:url" content="{{ url()->current() }}" />
+<meta property="og:type" content="article" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ $additive->additive_name }}" />
+<meta name="twitter:description" content="{{ Str::limit('Discover everything about ' . $additive->additive_name, 150) }}" />
+@endsection
+
 @section('head')
     @foreach(config('languages.available') as $language)
         <link rel="alternate" 
