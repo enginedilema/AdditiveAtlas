@@ -12,23 +12,29 @@ use App\Http\Controllers\TranslateAdditiveController;
 
 $languages = ['en', 'es', 'fr', 'de', 'it', 'ca', 'pt']; // Lista de idiomas disponibles
 Route::get('/', function () use ($languages) {
+    if(session('locale') !== null) {
+        return redirect('/'.session('locale'));
+    }
     $browserLang = substr(request()->server('HTTP_ACCEPT_LANGUAGE'), 0, 2); // Detecta el idioma del navegador
     if (in_array($browserLang, $languages)) {
+        Session::put('locale', $browserLang);
         return redirect("/$browserLang");
     }
+    Session::put('locale', 'en');
     return redirect('/en');
 });
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+
 Route::group(['prefix' => '{lang}', 'where' => ['lang' => implode('|', $languages)]], function () {
     Route::get('/', HomeController::class)->name('home');
-    Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
     Route::get('/about', function () {
         return view('about');
     })->name('about');
 
-/*Route::get('/set-language/{lang}', function ($lang) {
-    Session::put('locale', $lang);
-    return redirect()->back();
-})->name('set.language');*/
+Route::get('/set-language/{language}', function ($lang, $language) {
+    Session::put('locale', $language);
+    return redirect('/');
+})->name('set.language');
 
     Route::get('/additives/{name}/{code}/{id}', [AdditiveController::class, 'show'])->name('additives.show');
     Route::get('/search', SearchController::class)->name('search');
@@ -52,3 +58,4 @@ Route::get('theme', function () {
 
 Route::get('gemini' , [GeminiController::class, 'generateContent'])->name('gemini');
 Route::get('translate' , [TranslateAdditiveController::class, 'translate'])->name('translate');
+Route::get('translate-deepl' , [TranslateAdditiveController::class, 'translateDeepL'])->name('translate.deepl');

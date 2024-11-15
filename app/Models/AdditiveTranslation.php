@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class AdditiveTranslation extends Model
 {
     //
+    protected $fillable = [
+        'additive_id',
+        'lang',
+        'additive_name',
+        'description',
+        'option_process',
+        'food_uses',
+        'industrial_uses',
+        'beneficial_properties',
+        'side_effects',
+    ];
     public function additive()
     {
         return $this->belongsTo(Additive::class);

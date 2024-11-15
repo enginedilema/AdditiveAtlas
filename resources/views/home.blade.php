@@ -12,13 +12,13 @@
           <h3 class="text-xl font-bold text-petroleumBlue">
             <a href="{{ route('additives.show', [
       'lang' => session('locale'),
-      'name' => $additive->additive_name ? Str::slug($additive->additive_name) : 'no',
+      'name' => $additive->translation(session('locale'))->additive_name ? Str::slug($additive->translation(session('locale'))->additive_name) : 'no',
       'code' => Str::slug($additive->additive_e_code) ? Str::slug($additive->additive_e_code) : 'no',
       'id' => $additive->id,
 
   ]) }}" class="hover:text-coralOrange">{{$additive->additive_e_code ?? 'sin Codigo'}}</a>
           </h3>
-          <p class="text-gray-700 mt-2">{{$additive->translation(session('locale'))->additive_name}}</p>
+          <p class="text-gray-700 mt-2">{!!$additive->translation(session('locale'))->additive_name!!}</p>
         </div>
         @endforeach
 

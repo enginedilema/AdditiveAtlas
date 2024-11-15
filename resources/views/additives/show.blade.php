@@ -11,6 +11,19 @@
     Tot el que necessites saber sobre {{ $additive->translation(session('locale'))->additive_name }} ({{ $additive->additive_e_code }}): perills, usos, i normativa. Descobreix si realment és segur!
 @endsection
 
+@section('head')
+    @foreach(config('languages.available') as $language)
+        <link rel="alternate" 
+              href="{{ route('additives.show', [
+                  'lang' => $language,
+                    'name' => $additive->translation($language)->additive_name ? Str::slug($additive->translation($language)->additive_name) : 'no',
+                    'code' => Str::slug($additive->additive_e_code) ? Str::slug($additive->additive_e_code) : 'no',
+                    'id' => $additive->id,
+              ]) }}" 
+              hreflang="{{ $language }}" />
+    @endforeach
+@endsection
+
 @section('content')
 <div class="container mx-auto py-8">
 
@@ -99,4 +112,53 @@
         </tbody>
     </table>
 </div>
+
+
+    <!-- Bloque de los 5 aditivos más visitados -->
+    <section class="bg-lightGray p-6 rounded-lg shadow-md mb-8">
+        <h3 class="text-2xl font-bold text-center mb-4">Top 5</h3>
+        <ul class="list-disc list-inside">
+            @foreach($topAdditives as $topAdditive)
+                <li class="mb-2">
+                    <a href="{{ route('additives.show', [
+                'lang' => session('locale'),
+                'name' => $topAdditive->translation(session('locale'))->additive_name ? Str::slug($topAdditive->translation(session('locale'))->additive_name) : 'no',
+                'code' => Str::slug($topAdditive->additive_e_code) ? Str::slug($topAdditive->additive_e_code) : 'no-code',
+                'id' => $topAdditive->id
+            ]) }}"
+                       class="text-petroleumBlue font-semibold hover:text-coralOrange transition duration-200">
+                       {{ $topAdditive->additive_e_code }} - {!! $topAdditive->translation(session('locale'))->additive_name !!} 
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </section>
+        <!-- Navegación interna: Siguiente y Anterior -->
+        <div class="flex justify-between mt-10">
+            @if($previousAdditive)
+                <a href="{{ route('additives.show', [
+                    'lang' => session('locale'),
+                    'name' => Str::slug($previousAdditive->additive_name) ?: 'no-name',
+                    'code' => Str::slug($previousAdditive->additive_e_code) ?: 'no-code',
+                    'id' => $previousAdditive->id
+                ]) }}" class="text-petroleumBlue font-bold hover:text-coralOrange">
+                    ← {{ $previousAdditive->additive_name }}
+                </a>
+            @else
+                <span></span>
+            @endif
+    
+            @if($nextAdditive)
+                <a href="{{ route('additives.show', [
+                    'lang' => session('locale'),
+                    'name' => Str::slug($nextAdditive->additive_name) ?: 'no-name',
+                    'code' => Str::slug($nextAdditive->additive_e_code) ?: 'no-code',
+                    'id' => $nextAdditive->id
+                ]) }}" class="text-petroleumBlue font-bold hover:text-coralOrange">
+                    {{ $nextAdditive->additive_name }} →
+                </a>
+            @else
+                <span></span>
+            @endif
+        </div>
 @endsection

@@ -46,7 +46,19 @@ class AdditiveController extends Controller
         $categories = AdditiveDetail::where('additive_e_code', $additive->additive_e_code)
         ->groupBy('food_category_level')
         ->orderBy('display_order','asc')->get();
-        return view('additives.show', compact('additives','categories','additive'));
+        $additive->visit_count = $additive->visit_count + 1;
+        $additive->save();
+        $topAdditives = Additive::orderBy('visit_count', 'desc')
+                    ->limit(5)
+                    ->get();
+        $previousAdditive = Additive::where('id', '<', $additive->id)
+            ->orderBy('id', 'desc')
+            ->first();
+            
+        $nextAdditive = Additive::where('id', '>', $additive->id)
+            ->orderBy('id', 'asc')
+            ->first();
+        return view('additives.show', compact('additives','categories','additive','topAdditives','previousAdditive','nextAdditive'));
     }
 
     /**

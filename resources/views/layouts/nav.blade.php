@@ -30,31 +30,23 @@
     <a href="#" class="block hover:text-lightGray transition duration-200 ease-in-out">Contact</a>
   </div>
 
-  <!-- Buscador -->
-  <form action="{{ route('search',['lang' => session('locale')]) }}" method="GET" class="hidden md:flex items-center bg-white rounded-full shadow-lg overflow-hidden">
-    <div class="flex items-center overflow-hidden rounded-full w-full">
-      <input
-          type="text"
-          name="query"
-          placeholder="Search additives..."
-          class="p-2 pl-4 w-full bg-transparent text-petroleumBlue focus:outline-none"
-          required
-      />
-      <button type="submit" class="bg-coralOrange px-4 py-2 text-white font-bold hover:bg-petroleumBlue transition duration-200 ease-in-out">
-          Search
-      </button>
-    </div>
-  </form>
-
   <!-- Selector de idioma -->
   @php
-  $languages = ['en' => 'English', 'es' => 'Español', 'fr' => 'Français'];
+$languages = [
+    'en' => 'English',
+    'es' => 'Español',
+    'fr' => 'Français',
+    'ca' => 'Català',
+    'de' => 'Deutsch',
+    'it' => 'Italiano',
+    'pt' => 'Português'
+  ];
   $currentLang = request()->segment(1); // Detecta el prefijo de idioma en la URL
 @endphp
 
 <div class="language-selector hidden md:block">
   @foreach($languages as $langCode => $language)
-      <a href="{{ url("/$langCode") }}" 
+      <a href="{{ route('set.language',['language'=> $langCode,'lang'=> session('locale')]) }}" 
          class="text-sm {{ $currentLang === $langCode ? 'font-bold' : '' }}">
           {{ $language }}
       </a>

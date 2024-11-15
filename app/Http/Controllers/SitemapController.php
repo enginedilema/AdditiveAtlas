@@ -10,6 +10,7 @@ class SitemapController extends Controller
 {
     public function __invoke()
     {
+        $languages = config('languages.available');
         // Obtenir tots els additius
         $additives = Additive::groupBy('additive_e_code')->get();
 
@@ -18,9 +19,11 @@ class SitemapController extends Controller
         $xml->addAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
         foreach ($additives as $additive) {
+            foreach ($languages as $lang) {
             $url = $xml->addChild('url');
             $url->addChild('loc', route('additives.show', [
-                'name' => Str::slug($additive->additive_name) ? Str::slug($additive->additive_name) : 'no-name',
+                'lang' => $lang,
+                'name' => $additive->translation(session('locale'))->additive_name ? Str::slug($additive->translation(session('locale'))->additive_name) : 'no',
                 'code' => Str::slug($additive->additive_e_code) ? Str::slug($additive->additive_e_code) : 'no-code',
                 'id' => $additive->id
             ]));
@@ -28,6 +31,7 @@ class SitemapController extends Controller
             $url->addChild('changefreq', 'weekly');
             $url->addChild('priority', '0.8');
         }
+    }
 
         // Retornar la resposta amb el sitemap XML
         return response($xml->asXML(), 200)

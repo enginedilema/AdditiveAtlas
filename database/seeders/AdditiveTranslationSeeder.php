@@ -15,7 +15,7 @@ class AdditiveTranslationSeeder extends Seeder
     public function run(): void
     {
    // Definimos los idiomas que queremos añadir
-   $languages = ['en', 'ca','fr', 'de', 'es', 'it', 'pt'];
+   $languages = config('languages.available');
    // Obtenemos todos los registros de la tabla Additive
    $additives = Additive::all();
 

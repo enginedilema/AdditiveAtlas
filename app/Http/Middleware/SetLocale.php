@@ -19,10 +19,17 @@ class SetLocale
     {
         //$locale = Session::get('locale', config('app.locale'));
         $locale = $request->route('lang'); // Obtiene el prefijo de idioma de la URL
-        
+        if($locale === null) {
+            $locale = $request->segment(1);
+        }
+
         if (in_array($locale, ['en', 'es', 'fr', 'de', 'it', 'ca', 'pt'])) {
             App::setLocale($locale);
             Session::put('locale', $locale);
+        }
+        else {
+            App::setLocale('en');
+            Session::put('locale', 'en');
         }
         return $next($request);
     }

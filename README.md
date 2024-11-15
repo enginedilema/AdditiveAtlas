@@ -58,6 +58,9 @@ Els detalls del aditiu canvien d'idioma segons la variable de sessió.
 ## Sistema de rutes multiidioma
 Modificar les rutes per gestionar cada idioma en una carpeta diferent.
 
+## Hreflang
+Implementem el sistema de a hreflang per millorar el nostre SEO internacional.
+
 ## Captures de pantalla
 
 ### Pàgina d'Inici

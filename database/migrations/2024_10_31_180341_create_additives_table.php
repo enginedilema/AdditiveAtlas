@@ -27,6 +27,7 @@ return new class extends Migration
             $table->text('industrial_uses')->nullable();
             $table->text('beneficial_properties')->nullable();
             $table->text('side_effects')->nullable();
+            $table->unsignedBigInteger('visit_count')->default(0);
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@
                 <div class="bg-white p-4 rounded shadow hover:shadow-lg transition-shadow">
                     <h3 class="text-xl font-bold text-petroleumBlue">
                         <a href="{{ route('additives.show', [
+    'lang' => session('locale'),
     'name' => $additive->additive_name ? Str::slug($additive->additive_name) : '',
     'code' => $additive->additive_e_code ? Str::slug($additive->additive_e_code) : '',
     'id' => $additive->id
@@ -32,6 +33,7 @@
                     @endif
 
                     <a href="{{ route('additives.show', [
+    'lang' => session('locale'),
     'name' => $additive->additive_name ? Str::slug($additive->additive_name) : 'no',
     'code' => $additive->additive_e_code ? Str::slug($additive->additive_e_code) : 'no',
     'id' => $additive->id

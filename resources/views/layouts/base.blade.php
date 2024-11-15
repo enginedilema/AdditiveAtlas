@@ -12,6 +12,11 @@
   <meta name="description" content="@yield('meta_description', 'Descobreix què s’amaga darrere dels additius alimentaris: impacte, riscos, i molt més en additiveAtlas.cat. Tot el que Google no t’explicarà directament!')">
   <script src="https://cdn.tailwindcss.com"></script>
 @vite('resources/css/app.css')
+@yield('head')
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 </head>
 <body class="bg-lightGray text-petroleumBlue font-sans">
 
