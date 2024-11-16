@@ -16,12 +16,14 @@
 <meta property="og:title" content="{{ $additive->additive_name }}" />
 <meta property="og:description" content="{{ Str::limit('Discover everything about ' . $additive->additive_name, 150) }}" />
 <meta property="og:url" content="{{ url()->current() }}" />
+<meta property="og:image" content="{{ asset('share.jpg') }}" />
 <meta property="og:type" content="article" />
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ $additive->additive_name }}" />
 <meta name="twitter:description" content="{{ Str::limit('Discover everything about ' . $additive->additive_name, 150) }}" />
+<meta name="twitter:image" content="{{ asset('share.jpg') }}" />
 @endsection
 
 @section('head')
